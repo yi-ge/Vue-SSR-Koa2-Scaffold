@@ -114,8 +114,6 @@ module.exports = (app, cb) => {
     if (stats.errors.length) return
 
     serverTime = stats.time
-    // console.log('web-dev')
-    // update()
   })
 
   // web
@@ -190,8 +188,6 @@ module.exports = (app, cb) => {
     ))
 
     webTime = stats.time
-    // console.log('web-dev')
-    // update()
   })
   app.use(webpackHotMiddleware(clientCompiler))
 }
