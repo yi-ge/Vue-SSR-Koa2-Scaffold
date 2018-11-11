@@ -38,9 +38,6 @@ module.exports = app => {
         template,
         clientManifest
       })
-      const API = require('../dist/api/api').default
-      const server = API(app)
-      resolve(server)
     } else {
       // dev mode
       setUpDevServer(app, (bundle, options, apiMain, apiOutDir) => {
@@ -54,6 +51,7 @@ module.exports = app => {
         }
       })
     }
+
     app.use(async (ctx, next) => {
       if (!renderer) {
         ctx.type = 'html'
@@ -92,5 +90,11 @@ module.exports = app => {
       ctx.body = html
       next()
     })
+
+    if (isProd) {
+      const API = require('../dist/api/api').default
+      const server = API(app)
+      resolve(server)
+    }
   })
 }
