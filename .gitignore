@@ -1,0 +1,20 @@
+.DS_Store
+node_modules
+
+# 编译后的文件以下两个目录
+/dist/web
+/dist/api
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
