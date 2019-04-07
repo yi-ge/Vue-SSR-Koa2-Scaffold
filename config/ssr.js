@@ -15,7 +15,7 @@ module.exports = app => {
   return new Promise((resolve, reject) => {
     const createRenderer = (bundle, options) => {
       return createBundleRenderer(bundle, Object.assign(options, {
-        cache: LRU({
+        cache: new LRU({
           max: 1000,
           maxAge: 1000 * 60 * 15
         }),
@@ -81,6 +81,7 @@ module.exports = app => {
           html = '404 | Not Found'
         } else {
           status = 500
+          // console.log(e)
           console.log(chalk.red('\nError: '), e.message)
           html = '500 | Internal Server Error'
         }

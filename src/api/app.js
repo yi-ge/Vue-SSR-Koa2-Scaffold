@@ -5,7 +5,7 @@ export default app => {
   app.proxy = true
 
   const server = require('http').createServer(app.callback())
-  // const io = require('socket.io')(server)
+  // const io = require('socket.io')(server) // 注释为启用socket.io的方法
 
   // io.on('connection', function (socket) {
   //   console.log('a user connected: ' + socket.id)
@@ -32,7 +32,7 @@ export default app => {
     })
     .use(KoaBody({
       multipart: true, // 开启对multipart/form-data的支持
-      strict: false, // 取消严格模式，parse GET, HEAD, DELETE requests
+      parsedMethods: ['POST', 'PUT', 'PATCH', 'GET', 'HEAD', 'DELETE'], // parse GET, HEAD, DELETE requests
       formidable: { // 设置上传参数
         // uploadDir: path.join(__dirname, '../assets/uploads/tmpfile')
       },
